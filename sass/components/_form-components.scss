@@ -1,0 +1,35 @@
+/* Form Components Styles ******************************************/
+
+.contact-submit, .contact-input, .contact-textarea {
+	font-size: 100%;
+	font-family: inherit;
+	display: block;
+	color: inherit;
+	 box-sizing: border-box;
+	 width: 100%;
+}
+
+.contact-submit {
+	outline: none;
+	border: 1px solid $white;
+	@include padMargin(pd, fontEm(16px, 28px));
+	background: $black;
+	color: $white;
+	cursor: $cursor;
+	@include transition(background, 0.5s, ease);
+
+	&:hover {
+		background: $white;
+		color: $black;
+	}
+}
+
+.contact-input, .contact-textarea {
+	border: 1px solid $white;
+	@include padMargin(pd, fontEm(8px, 16px));
+	@include padMargin-all(mg, $bottom:fontEm(16px, 16px));
+}
+
+.contact-textarea {
+	vertical-align: top;
+}

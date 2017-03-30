@@ -1,0 +1,163 @@
+// Mixin to define font weights
+
+@mixin font-weight($weight) {
+  @if $weight == light {
+    font-weight: 300;
+  } @else if $weight == regular {
+    font-weight: 400;
+  } @else if $weight == bold {
+    font-weight: 500;
+  } @else if $weight == xbold {
+    font-weight: 700;
+  } 
+}
+
+// Mixin to define transitions
+
+@mixin transition($property, $duration, $style, $delay: null) {
+  -webkit-transition: $property $duration $style $delay;
+  -moz-transition: $property $duration $style $delay;
+  -ms-transition: $property $duration $style $delay;
+  transition: $property $duration $style $delay;
+}
+
+// Mixin to define transforms
+
+@mixin transform($property, $arg1, $arg2: null, $arg3: null) {
+  -webkit-transform: #{$property}unquote("(")($arg1, $arg2, $arg3)unquote(")");
+  transform: #{$property}unquote("(")($arg1, $arg2, $arg3)unquote(")");
+}
+
+// Mixin to define link colors
+
+@mixin links ($link, $visit, $hover) {
+  a {
+    color: $link;
+
+    &:visited {
+      color: $visit;
+    }
+    &:hover {
+      color: $hover;   
+    }
+    &:active {
+      color: $visit;
+    }
+  }
+}
+
+// Mixin to define borders
+
+@mixin border($position, $size, $color) {
+  @if $position == null {
+    border: $size solid $color;
+    } @else {
+      border-#{$position}: $size solid $color;
+    }
+}
+
+// Mixin to define text transform
+
+@mixin txt-transform($style) {
+  text-transform: $style;
+}
+
+// Mixin to define floats
+
+@mixin float($direction) {
+  @if $direction == left {
+    float: left;
+  } @else if $direction == right {
+    float: right;
+  } @else if $direction == none {
+    float: none;
+  } 
+}
+
+// Mixin to define text and box shadow
+
+@mixin shadow($attr, $blur, $x: 0, $y: 0, $spread: null, $type: inset, $color: rgba($black, 0.3)) {
+  @if $attr == text-shadow {
+    #{$attr}: $x $y $blur $color;
+  } @else if $attr == box-shadow {
+    #{$attr}: $type $x $y $blur $spread $color;
+  }
+}
+
+// Mixin to define absolute and fixed positioning
+
+@mixin positioning($position, $top, $left, $right: null, $bottom: null, $width: 100%, $zindex: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  width: $width;
+  z-index: $zindex;
+}
+
+// Mixin to define display style
+
+@mixin display($style) {
+  @if $style == blk {
+    display: block;
+  } @else if $style == inline {
+    display: inline-block;
+  } @else if $style == none {
+    display: none;
+  }
+}
+
+// Mixin to define margins and padding - shorthand version
+
+@mixin padMargin($attr, $output) {
+  @if $attr == pd {
+      padding: $output;
+  } @else if $attr == mg {
+      margin: $output;
+  }
+}
+
+// Mixin to define margins and padding - longhand version
+
+@mixin padMargin-all($attr, $top:0, $right:0, $bottom:0, $left:0) {
+  @if $attr == pd {
+      padding: $top $right $bottom $left;
+  } @else if $attr == mg {
+    margin: $top $right $bottom $left;
+  }
+}
+
+// Mixin to define media queries
+
+@mixin responsive($width, $orientation){
+  @if $width == dxlarge {
+    @media screen and  (max-width: $desktop-xlarge) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == dlarge {
+    @media screen and (max-width: $desktop-large) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == dsmall {
+    @media screen and (max-width: $desktop-small) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == tlarge {
+    @media screen and (max-width: $tablet-large) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == tsmall {
+    @media screen and (max-width: $tablet-small) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == mlarge {
+    @media screen and (max-width: $mobile-large) and (orientation: $orientation) {
+      @content;
+    }
+  } @else if $width == msmall {
+    @media screen and (max-width: $mobile-small) and (orientation: $orientation) {
+      @content;
+    }
+  }
+}

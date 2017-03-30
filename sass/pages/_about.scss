@@ -1,0 +1,17 @@
+/* About Page Styles ******************************************/
+
+.about {
+	background: $black url(../images/me.jpg) no-repeat center center;
+	background-size: cover;
+	justify-content: flex-end;
+
+	&__para {
+		font-size: fontEm(36);
+		@include responsive(tlarge, portrait) {
+			font-size: fontEm(32);
+		}
+		@include responsive(msmall, portrait) {
+			font-size: fontEm(27);
+		}
+	}
+}

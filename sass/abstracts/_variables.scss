@@ -1,0 +1,39 @@
+// Font family
+$roboto: 'Roboto', sans-serif;
+$quicksand: 'Quicksand', sans-serif;
+
+// Font size
+$base-font-size: 16;
+
+// Colors
+$white: #FFFFFF;
+$black: #000000;
+$grey: #656464;
+$green: #36b100;
+$red: #df1c1c;
+$blue: #0c44b7;
+$bluegrey: #383d40;
+$lightyellow: #e8d3a4;
+$purple: #b999e6;
+
+// Margins, Paddings, Border, Line height and Misc
+$padding-base: 0.5em;
+$padding-button: 0.5em 1.5em;
+$margin-base: 0.5em;
+$line-height-base: 2em;
+$cursor: pointer;
+
+// Widths and Heights
+$width-full: 100%;
+
+// Media queries
+$mobile-small: 360px;
+$mobile-large: 500px;
+$tablet-small: 750px;
+$tablet-large: 1024px;
+$desktop-small: 1280px;
+$desktop-large: 1450px;
+$desktop-xlarge: 1950px;
+
+
+

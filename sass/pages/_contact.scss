@@ -1,0 +1,291 @@
+/* Contact Page Styles ******************************************/
+
+.contact {
+	background: $white;
+}
+
+/* Contact Ecard Section */
+
+.ecard {
+	color: $white;
+	font-size: fontEm(14);
+	@include font-weight(light);
+	letter-spacing: 0.03125em; 
+	max-width: 630px;
+	@include padMargin-all(mg, 0, auto, 0, auto);
+	text-align: left;
+	width: $width-full;
+	@include responsive(dsmall, portrait) {
+		width: 76%;
+		font-size: fontEm(18);
+	}
+	@include responsive(tsmall, portrait) {
+		width: 80%;
+	}
+	@include responsive(mlarge, portrait) {
+		width: $width-full;
+		font-size: fontEm(17);
+	}
+	@include responsive(msmall, portrait) {
+		width: 94%;
+	}
+
+	a:link,
+	a:visited,
+	a:hover,
+	a:active {
+		color: $purple;
+		@include font-weight(regular);
+	}
+	a:hover {
+		color: $white;
+	}
+	&__checkbox {
+		@include display(none);
+	}
+	&__label {
+		@include display(blk);
+	}
+}
+
+/* Contact Ecard Structure */
+
+.card {
+	height: 375px;
+	max-width: 630px;
+	@include padMargin-all(mg, 0, auto, 0, auto);
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	position: relative;
+	width: $width-full;
+
+	@include responsive(tsmall, portrait) {
+		height: 300px;
+		max-width: 630px;
+	}
+}
+
+.front,
+.back {
+	background-size: cover;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-radius: 2px;
+	cursor: $cursor;
+	height: 100%;
+	@include padMargin(pd, pm(30px, 630px));
+	@include positioning(absolute, 0, 0);
+	-webkit-transition: all 0.5s ease, -webkit-transform 0.5s;
+	transition: all 0.5s ease, -webkit-transform 0.5s;
+	transition: transform 0.5s, all 0.5s ease;
+	transition: transform 0.5s, all 0.5s ease, -webkit-transform 0.5s;
+}
+.front {
+	background: $black url(../images/card-bg.jpg) no-repeat;
+
+	&__header {
+		&__h1, &__h2 {
+			color: $white;
+			@include font-weight(light);
+			@include shadow(text-shadow, 8px, 2px, 10px);
+			@include txt-transform(none);
+		}
+		&__h1 {
+			font-size: fontEm(48);
+			@include responsive(tsmall, portrait) {
+				font-size: fontEm(40);
+			}
+			@include responsive(mlarge, portrait) {
+				font-size: fontEm(32);
+			}
+		}
+		&__h2 {
+			font-size: fontEm(19);
+			@include responsive(mlarge, portrait) {
+				font-size: fontEm(18);
+			}
+		}
+	}
+
+	&__section {
+		font-size: fontEm(17);
+		line-height: fontEm(25);
+
+		&__para {
+			@include padMargin-all(pd, pm(16px, 375px));
+			@include responsive(tsmall, portrait) {
+				@include padMargin-all(pd, 5%);
+			}
+			@include responsive(mlarge, portrait) {
+				@include padMargin-all(pd, 8%);
+			}
+		}
+		&__span {
+			@include padMargin-all(pd, $left: pm(28px, 630px));
+		}
+	}	
+}
+
+.back {
+	background: lighten($grey, 41%) url(../images/pic.jpg) no-repeat center center;
+	&__para {
+		background: rgba($black, 0.4);
+		border-radius: 2px;
+		font-size: fontEm(18);
+		@include font-weight(regular);
+		@include padMargin-all(pd, pm(8px, 630px), pm(10px, 630px), pm(8px, 630px), pm(10px, 630px));
+		@include positioning(absolute, null, pm(20px, 630px), null, pm(20px, 375px), null);
+	}
+}
+
+#digitalCard:not(:checked) ~ label > .card .front {
+	@include transform(rotateX, 0deg);
+}
+
+#digitalCard:not(:checked) ~ label > .card .front:hover {
+	@include shadow(box-shadow, 20px, 1px, 20px, 5px, null, rgba(#333333, 0.2));
+	@include transform(rotateX, 15deg);
+}
+
+#digitalCard:not(:checked) ~ label > .card .back {
+	@include transform(rotateX, -180deg);
+}
+
+#digitalCard:checked ~ label > .card .front {
+	@include transform(rotateX, 180deg);
+}
+
+#digitalCard:checked ~ label > .card .back {
+	@include transform(rotateX, 0deg);
+}
+
+#digitalCard:checked ~ label > .card .back:hover {
+	@include shadow(box-shadow, 20px, 1px, -20px, 5px, null, rgba(#333333, 0.2));
+	@include transform(rotateX, -10deg);
+}
+
+/*------ Contact Ecard Front Header Elements ------*/
+
+.name,
+.flipIcon {
+	@include display(inline);
+}
+
+.flipIcon img {
+	max-width: 34px;
+	width: $width-full;
+	@include responsive(tsmall, portrait) {
+		width: 80%;
+	}
+	@include responsive(mlarge, portrait) {
+		width: 60%;
+	}
+}
+
+
+/*------ Contact Ecard Footer Elements ------*/
+
+.front {
+	&__footer {
+		font-size: fontEm(17);
+		height: fontEm(46px, 16px);
+		@include padMargin-all(pd, $right: pm(28px, 630px), $left: pm(28px, 630px));
+		@include positioning(absolute, null, 0, $bottom: pm(30px, 375px));
+		@include responsive(tsmall, portrait) {
+			bottom: 5%;
+		}
+
+		&__left-icon {
+			@include float(left);
+			width: $width-full / 2;
+			@include responsive(tsmall, portrait) {
+				max-width: 180px;
+				width: $width-full;
+			}
+			@include responsive(tsmall, landscape) {
+				max-width: 180px;
+				width: $width-full;
+			}
+
+			@include responsive(mlarge, portrait) {
+				max-width: 150px;
+				width: $width-full;
+			}
+		}
+
+		&__image {
+			@include float(left);
+			max-width: 56px;
+			@include padMargin-all(pd, 1.2%, $right: pm(16px, 315px));
+			width: $width-full;
+			@include responsive(tsmall, portrait) {
+				max-width: 40px;
+				width: 70%;
+			}
+			@include responsive(tsmall, landscape) {
+				max-width: 40px;
+				width: 70%;
+			}
+			@include responsive(mlarge, portrait) {
+				max-width: 33px;
+				width: 60%;
+			}
+			@include responsive(msmall, portrait) {
+				max-width: 25px;
+			}
+		}
+		&__txt {
+			@include float(left);
+			@include padMargin-all(mg, pm(8px, 315px));
+			@include responsive(mlarge, portrait) {
+				font-size: fontEm(16);
+			}
+			@include responsive(msmall, portrait) {
+				font-size: fontEm(13);
+			}
+		}
+		
+		&__social-icons {
+			@include float(right);
+			text-align: right;
+			width: $width-full / 2;
+			@include responsive(tsmall, portrait) {
+				width: 40%;
+			}
+			@include responsive(tsmall, landscape) {
+				width: 40%;
+			}
+
+			&__image {
+				max-width: 38px;
+				@include padMargin-all(mg, $top: pm(8px, 315px), $left: pm(16px, 315px));
+				width: $width-full;
+				-webkit-transition: all 0.5s ease, -webkit-transform 0.5s;
+				transition: all 0.5s ease, -webkit-transform 0.5s;
+				transition: transform 0.5s, all 0.5s ease;
+				transition: transform 0.5s, all 0.5s ease, -webkit-transform 0.5s;
+				@include responsive(tsmall, portrait) {
+					max-width: 26px;
+					width: 70%;
+				}
+				@include responsive(tsmall, landscape) {
+					max-width: 26px;
+					width: 70%;
+				}
+				@include responsive(mlarge, portrait) {
+					max-width: 20px;
+					width: 50%;
+				}
+				@include responsive(msmall, portrait) {
+					max-width: 16px;
+				}
+
+				&:hover {
+					@include transform(scale, 1.5);
+				}
+			}
+		}
+	}
+}
+
+

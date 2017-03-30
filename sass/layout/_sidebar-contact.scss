@@ -1,0 +1,76 @@
+/* Sidebar Contact Styles ******************************************/
+
+.sideContact-cbox {
+	display: none;
+}
+
+.sideContact-label {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	background: $black;
+	// height: 50px;
+	// width: 50px;
+	z-index: 201;
+	text-align: center;
+	// line-height: 50px;
+	font-size: fontEm(20); 
+	color: $white;
+	cursor: $cursor;
+	@include padMargin(pd, fontEm(10px, 16px));
+	@include transition(all, 0.5s, ease);
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	border-right: 1px solid grey;
+
+	@include responsive(tsmall, portrait){
+		top: 65px;
+		left: 5px;
+		font-size: fontEm(15); 
+		z-index: 10;
+		// @include padMargin-all(pd, $right: fontEm(4px, 16px), $left: fontEm(2px, 16px));
+	}
+}
+
+.sidebar-contact {
+	position: absolute;
+	width: 250px;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	background: $black;
+	@include padMargin(pd, fontEm(24px, 16px));
+	z-index: 200;
+	@include padMargin-all(mg, $left: -250px);
+	@include transition(all, 0.5s, ease);
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	border-right: 1px solid grey;
+
+		@include responsive(tsmall, portrait){
+			width: 180px;
+			top: 0;
+			left: 0;
+			z-index: 20;
+			transform: translateY(0);
+			@include padMargin-all(mg, $left: -180px);
+	}
+}
+
+#sideContact-cbox:checked ~ .wrapper > .sidebar-contact {
+	@include padMargin-all(mg, $left: 0);
+}
+
+#sideContact-cbox:checked + .sideContact-label {
+	@include padMargin-all(mg, $left: 250px);
+	background: $white;
+	color: $black;
+
+
+	@include responsive(tsmall, portrait){
+		@include padMargin-all(mg, $left: 180px);
+		left: 0;
+	}
+}

@@ -1,0 +1,97 @@
+/* Home Page Styles ******************************************/
+
+.home {
+	&:after {
+		-webkit-animation: bgAnimation 36s linear infinite 0s;
+		animation: bgAnimation 36s linear infinite 0s; 
+		background: url(../images/bg.jpg) center center fixed;
+		background-repeat: no-repeat;
+		background-size: $width-full;
+		content: "";
+		height: $width-full;
+		@include positioning(fixed, 0, 0, $zindex: 0);
+	}
+	&__container {
+		z-index: 2;
+	}
+	&__para {
+		font-size: fontEm(36);
+		@include responsive(tsmall, portrait) {
+			font-size: fontEm(32);
+		}
+		@include responsive(msmall, portrait) {
+			font-size: fontEm(27);
+		}
+
+		&--last-child:after {
+			content: "\f107"; 
+			font-family: FontAwesome;
+			font-style: normal;
+			@include font-weight(regular);
+		}
+	}
+}
+
+
+/*------ Background Animation ------*/
+
+@-webkit-keyframes bgAnimation { 
+	0% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	25% {
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		-webkit-transform: scale(1.05) rotate(5deg);
+		transform: scale(1.05) rotate(5deg);
+	}
+	50% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		-webkit-transform: scale(1.10) rotate(10deg);
+		transform: scale(1.10) rotate(10deg);
+	}
+	75% {
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		-webkit-transform: scale(1.05) rotate(5deg);
+		transform: scale(1.05) rotate(5deg);
+	}
+	100% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		-webkit-transform: scale(1) rotate(0deg);
+		transform: scale(1) rotate(0deg);
+	}
+} 
+@keyframes bgAnimation { 
+	0% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+	25% {
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		-webkit-transform: scale(1.05) rotate(5deg);
+		transform: scale(1.05) rotate(5deg);
+	}
+	50% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		-webkit-transform: scale(1.10) rotate(10deg);
+		transform: scale(1.10) rotate(10deg);
+	}
+	75% {
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+		-webkit-transform: scale(1.05) rotate(5deg);
+		transform: scale(1.05) rotate(5deg);
+	}
+	100% {
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+		-webkit-transform: scale(1) rotate(0deg);
+		transform: scale(1) rotate(0deg);
+	}
+}

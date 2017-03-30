@@ -1,0 +1,11 @@
+// Function to convert font size px to em
+
+@function fontEm($pixel, $base: $base-font-size) {
+	@return #{$pixel/$base}em;
+}
+
+// Function to set padding & margin
+
+@function pm($target, $contextwidth) {
+	@return percentage($target/$contextwidth);
+}

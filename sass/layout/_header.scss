@@ -1,0 +1,158 @@
+/* Header Styles ******************************************/
+
+/* Header Container */
+
+.page-header {
+	background: $white;
+	color: $black;
+	height: 70px;
+	line-height: 70px;
+	@include positioning(fixed, 0, 0, $zindex: 10);
+	@include responsive(tsmall, portrait) {
+		background: rgba($white, 1);
+		height: 52px;
+		line-height: 52px;
+		top: 0;
+	}
+}
+
+/* Logo */
+
+.logo {
+	cursor: $cursor;
+	@include float(left);
+	font-size: fontEm(25);
+	@include padMargin-all(pd, $left: pm(30px, 2550px));
+	text-shadow: none;
+	text-transform: none;
+	@include responsive(tsmall, portrait) {
+		@include display(none);
+	}
+
+	a {
+		@include transition(all, 0.5s, ease);
+
+		&:hover {
+			color: rgba($black, 0.5);
+		}
+	}
+}
+
+/* Navigation Block */
+
+.main-navigation {
+	@include float(right);
+	list-style-type: none;
+	@include padMargin-all(mg, $right: pm(20px, 2550px));
+	@include responsive(tsmall, portrait) {
+		@include display(none);
+	}
+}
+
+.main-navigation__item {
+	position: relative;	
+	@include display(inline);
+
+	a {
+		font-size: fontEm(18);
+		letter-spacing: 1;
+		@include padMargin-all(pd, $right: 1.17647em, $left: 1.17647em);
+
+		&:before {
+			content: "";
+			@include border(bottom, 2px, lighten($grey, 41%));
+			@include positioning(absolute, 50%, 0, $width: 0);
+		}
+
+		&:after {
+			content: "";
+			@include border(bottom, 2px, rgba($black, 1));
+			@include positioning(absolute, 50%, null, $right: 0, $width: 0);
+		}
+
+		&:hover {
+			@include transition(all, 0.5s, ease);
+
+			&:before {
+				@include border(bottom, 2px, lighten($grey, 41%));
+				@include transition(all, 0.4s, cubic-bezier(.694,.048,.335,1));
+				width: $width-full;
+			}
+
+			&:after {
+				@include border(bottom, 2px, rgba($black, 1));
+				@include transition(all, 0.4s, cubic-bezier(.900,.048,.335,1) .15s);
+				width: $width-full;
+			}
+		}
+		&.active {
+			cursor: crosshair;
+			&:after {
+				@include border(bottom, 2px, rgba($black, 1));
+				@include transition(all, 0.4s, cubic-bezier(.900,.048,.335,1) .15s);
+				width: $width-full;
+			}
+		}
+	}
+}
+
+
+/* Search Block */
+
+.search-box {
+	@include float(right);
+	min-width: pm(76px, 2550px);
+	@include padMargin-all(pd, $right: pm(30px, 2550px));
+	text-align: right;
+	
+	input[type="search"], 
+	button[type="submit"] {
+		border:0;
+		font-family: $quicksand;
+		font-size: fontEm(18);
+		letter-spacing: 1;
+	}
+
+	input[type="search"] {
+		@include border(right, 1px, rgba($black, 1));
+		font-size:inherit;
+		padding: 0.5625em 0 0.625em 0.3125em;
+		text-align: right;
+		@include responsive(tlarge, portrait) {
+			max-width: 134px;
+		}
+
+		&:hover,
+		&:focus {
+			@include border(null, 1px, rgba($black, 1));
+			outline: none;
+		}
+
+		&::-webkit-input-placeholder {
+			color: $black !important;
+		}
+		&:-moz-placeholder {
+			color: $black !important;
+		}
+		&::-moz-placeholder {
+			color: $black !important;
+		}
+		&:-ms-input-placeholder {
+			color: $black !important;
+		}
+	}
+
+	&__icon {
+		background-color: $black;
+		color: $white;
+		cursor: $cursor;
+		@include display(inline);
+		@include padMargin(pd, fontEm(10px, 16px));
+		@include transition(background-color, 0.3s, ease);
+
+		&:hover {
+			background-color: $white;
+			color: $black;
+		}
+	}
+}

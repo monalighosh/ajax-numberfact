@@ -1,0 +1,32 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/placeholders";
+@import "abstracts/variables";
+
+@import "base/reset";
+@import "base/basics";
+@import "base/typography";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/sidebar-contact";
+@import "layout/sidebar-numberfact";
+
+@import "components/scroll-to-top-btn";
+@import "components/form-components";
+
+@import "pages/home";
+@import "pages/about";
+@import "pages/projects";
+@import "pages/skills";
+@import "pages/contact";
+@import "pages/search-modal";
+
+
+
+
+
+
+
+

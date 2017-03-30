@@ -1,0 +1,112 @@
+/* Mobile Navigation Styles ******************************************/
+
+/* Sidebar Block */
+.sidebar {
+	background: rgba($black, 0.9);
+	@include border(right, 1px, $black);
+	height: $width-full;
+	@include positioning(fixed, 0, -180px, 0, 0, $width: 180px, $zindex: 11);
+	@include transition(all, 0.5s, ease);
+}
+
+.mobile-navigation,
+.project-subnav {
+	list-style: none;
+}
+
+.mobile-nav,
+.projects-nav,
+.project-subnav {
+	@include display(none);
+}
+
+.mobile-navigation__item a,
+.mobile-navigation__item--last-child,
+.project-subnav__item a {
+	@include border(bottom, 1px, darken($grey, 9%));
+	color: lighten($grey, 35%);
+	@include display(blk);
+	font-size: fontEm(18); 
+	height: 45px;
+	letter-spacing: 1;
+	line-height: 45px;
+	@include padMargin-all(pd, $left: fontEm(16px, 16px));
+	transition: background 0.5s ease, color 0.5s ease;
+}
+
+.mobile-navigation__item {
+	& a {
+		&:hover {
+			background: $white;
+			color: $black;
+		}
+	}
+	&:first-child {
+		background: $white;
+	    height: 52px;
+
+	    a {
+			@include border(bottom, 0, rgba($white, 0));
+			color: $black;
+			font-size: fontEm(24); 
+			@include font-weight(xbold);			
+
+			&:hover {
+				color: $black;
+			}
+		}
+	}
+
+	&:last-child {
+		@include border(bottom, 0, rgba($white, 0));
+	}
+}
+
+
+.project-subnav__item {
+	& a {
+		background: rgba($white, 0.2);
+		&:before {
+			content: "-";
+			padding-right: 3%;
+		}
+		&:hover {
+			background: rgba($white, 0.6);
+			color: $black;
+		}
+	}
+}
+
+label[for="projects-nav"] {
+	@include display(blk);
+	cursor: $cursor;
+}
+
+label[for="mobile-nav"] {
+
+	i {
+		background-color: $black;
+		color: $white;
+		cursor: $cursor;
+		opacity: 0;
+		@include padMargin(pd, fontEm(10, 16));
+		@include positioning(fixed, 15px, 15px, $width: null, $zindex: 12);
+		@include transition(all, 0.5s, ease);
+		@include responsive(tsmall, portrait) {
+			opacity: 1;
+			left: 5px;
+		}
+	}
+}
+
+.mobile-nav:checked ~ div.wrapper div.sidebar {
+	left: 0;
+}
+
+.mobile-nav:checked ~ label[for="mobile-nav"] i {
+	left: 180px;
+}
+
+.projects-nav:checked ~ ul.project-subnav {
+	@include display(blk);
+}

@@ -1,0 +1,20 @@
+/* Footer Styles ******************************************/
+
+.page-footer {
+	background: rgba($black, 0.9);
+	font-size: fontEm(17);
+	@include font-weight(xbold);
+	height: 50px;
+	line-height: 50px;
+	@include positioning(fixed, null, 0, $bottom: 0, $zindex: 100);
+	text-align: center;
+	@include responsive(tlarge, portrait) {
+		height: 30px;
+		line-height: 30px;
+	}
+	@include responsive(tsmall, portrait) {
+		@include display(none);
+	}
+}
+
+

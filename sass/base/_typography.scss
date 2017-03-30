@@ -1,0 +1,63 @@
+/* Typography Styles ******************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700');
+
+/* Heading Generic */
+h1 {
+	color: $black;
+	@include font-weight(regular);
+	text-shadow: 0 0 10px lighten($grey, 20%), 0 0 20px lighten($grey, 40%);
+	@include txt-transform(uppercase);
+}
+
+/* Home Page Heading */
+.home {
+	&__heading {
+		font-size: fontEm(132);
+		text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+			             0px 8px 13px rgba(0,0,0,0.1),
+			             0px 18px 23px rgba(0,0,0,0.1);
+		@include responsive(tlarge, portrait) {
+			font-size: fontEm(96);
+		}
+		@include responsive(tsmall, portrait) {
+			font-size: fontEm(80);
+		}
+		@include responsive(msmall, portrait) {
+			font-size: fontEm(64);
+		}
+		@include responsive(msmall, landscape) {
+			font-size: fontEm(64);
+		}
+	}
+}
+
+/* About, Projects, Skills, Contact and Search Modal Page Heading */
+.about, .projects, .skills, .contact, .search-modal {
+	&__heading {
+		font-size: fontEm(80);
+		@include padMargin-all(mg, $bottom: 0.75em);
+		@include responsive(dsmall, portrait) {
+			font-size: fontEm(64);
+		}
+		@include responsive(tlarge, portrait) {
+			font-size: fontEm(56);
+		}
+		@include responsive(tsmall, portrait) {
+			font-size: fontEm(48);
+		}
+		@include responsive(msmall, portrait) {
+			font-size: fontEm(41);
+		}
+	}
+}
+
+.about, .skills, .search-modal {
+	&__heading {
+		color: $white;
+		text-shadow: 0 0 5px lighten($grey, 20%), 0 0 15px lighten($grey, 40%);
+	}
+}
+

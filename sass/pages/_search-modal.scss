@@ -1,0 +1,68 @@
+/* Search Modal Page Styles ******************************************/
+
+.search-modal {
+	background: rgba($black, 0.9);
+	color: $white;
+	opacity: 0;
+	pointer-events: none;
+	@include positioning(fixed, 0, 0, 0, 0, $zindex: 13);
+	@include transition(opacity, 0.5s, ease);
+
+	&:target {
+		opacity:1;
+		pointer-events: auto;
+	}
+	&__container {
+		@include positioning(absolute, 50%, 50%);
+		text-align: center;
+		@include transform(translate, -50%, -50%);
+	}
+	&__heading:after {
+		color: $grey;
+		content: "Device Width < 2560px";
+		@include display(blk);
+		font-size: fontEm(7);
+		@include padMargin(pd, pm(255px, 2550px));
+		text-shadow: none;
+
+		@include responsive(dxlarge, landscape) {
+			content: "Device Width < 1950px";
+		}
+		@include responsive(dxlarge, portrait) {
+			content: "Device Width < 1950px";
+		}
+		@include responsive(dlarge, landscape) {
+			content: "Device Width < 1450px";
+		}
+		@include responsive(dlarge, portrait) {
+			content: "Device Width < 1450px";
+		}
+		@include responsive(dsmall, portrait) {
+			content: "Device Width < 1280px";
+		}
+		@include responsive(tlarge, portrait) {
+			content: "Device Width < 1024px";
+		}
+		@include responsive(tsmall, portrait) {
+			content: "Device Width < 750px";
+		}
+		@include responsive(mlarge, portrait) {
+			content: "Device Width < 500px";
+		}
+		@include responsive(msmall, portrait) {
+			font-size: fontEm(8);
+			color: #7b7b7b;
+			content: "Device Width < 360px";
+		}
+	}
+	a {
+		color: $black;
+		font-size: fontEm(24);
+	}
+}
+
+.close {
+	background: $white;
+	@include padMargin(pd, pm(18px, 2550px));
+	@include positioning(fixed, 0, null, 0, null, null);
+}

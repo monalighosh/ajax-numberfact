@@ -1,0 +1,340 @@
+/* Skills Page Styles ******************************************/
+
+.skills {
+	background: $black;
+	overflow-x: hidden;
+
+	&__container {
+		text-align: center;
+	}
+}
+
+/* Horizontal Progress Bar */
+
+.progress-bar {
+	font-size: fontEm(21);
+	height: 100px;
+	@include padMargin-all(mg, $bottom: pm(50px, 1320px));
+	position: relative;
+	width: $width-full;
+
+	&__design,
+	&__frontend,
+	&__other {
+		color: $white;
+		line-height: 35px;
+		@include padMargin-all(pd, $left: 1%);
+		text-align: left;
+
+		&:after {
+			@include padMargin-all(mg, $top: 50px);
+			@include positioning(absolute, null, 0, $width: null);
+		}
+	}
+
+	&__design {
+		background: #595959;
+		@include positioning(absolute, 0, 0, $width: round($width-full / 2.2));
+
+		&:after {
+			color: #6d6e72;
+			content: "Design";
+		}
+	}
+
+	&__frontend {
+		background: #297ab7;
+		@include positioning(absolute, 0, 45%, $width: round($width-full / 2.9));
+
+		&:after {
+			color: #297ab7;
+			content: "Frontend";
+		}
+	}
+
+	&__other {
+		background: #95969a;
+		@include positioning(absolute, 0, null, 0, $width: ceil($width-full / 4.9));
+
+		&:after {
+			color: #95969a;
+			content: "Other Skills";
+		}
+	}
+}
+
+/* Vertical Graphs */
+
+.graphs-wrapper {
+	text-align: center;
+}
+
+.graph {
+		@include border(bottom, 1px, darken($grey, 17%));
+		text-align: left;
+		width: ceil($width-full / 3.4);
+		
+		@include responsive(dsmall, portrait) {
+			width: 45%;
+		}
+		@include responsive(tsmall, portrait) {
+			@include padMargin-all(mg, 5%, 0, 25%, 0);
+			width: 95%;
+		}
+		@include responsive(mlarge, portrait) {
+			@include padMargin-all(mg, 5%, 0, 30%, 0);
+		}
+		@include responsive(msmall, portrait) {
+			@include padMargin-all(mg, 15%, 0, 40%, 0);
+		}
+
+		&:first-child {
+			@include float(left);
+		}
+
+		&:last-child {
+			@include float(right);
+			@include responsive(dsmall, portrait) {
+				@include display(inline);
+				@include float(none);
+				@include padMargin-all(mg, 15%, auto, 9%, auto);
+			}
+			@include responsive(tlarge, portrait) {
+				@include padMargin-all(mg, 20%, auto, 9%, auto);
+			}
+			@include responsive(tsmall, portrait) {
+				@include float(left);
+				@include padMargin-all(mg, 25%, auto, 9%, auto);
+			}
+			@include responsive(mlarge, portrait) {
+				@include padMargin-all(mg, 30%, auto, 9%, auto);
+			}
+			@include responsive(msmall, portrait) {
+				@include padMargin-all(mg, 40%, auto, 9%, auto);
+			}
+		}
+
+		&:nth-child(2) {
+			@include display(inline);
+			@include padMargin-all(mg, 0, auto, 0, auto);
+			@include responsive(dsmall, portrait) {
+				@include float(right);
+			}
+			@include responsive(tsmall, portrait) {
+				@include float(left);
+			}
+		}
+	}
+
+.graph {
+	position: relative;
+	height: 250px; 
+	@include responsive(tsmall, portrait) {
+		height: 200px; 
+	}
+	@include responsive(mlarge, portrait) {
+		height: 220px; 
+	}
+
+	&__list {
+		list-style-type: none;
+		&__item {
+			cursor: $cursor;
+			height: 250px;
+			@include positioning(absolute, null, null, $bottom: 0, $width: 4.9020%, $zindex: 3);
+
+			&__tooltip {
+				background: darken($grey, 22%);
+				border-radius: 2px;
+				color: lighten($grey, 28%);
+				@include display(none);
+				height: 50px;
+				line-height: 27px;
+				@include padMargin(pd, 10px);
+				@include positioning(absolute, -70px, -60px, $width: 150px);
+				text-align: center;
+				@include responsive(tsmall, portrait) {
+					height: 40px;
+					left: -45px;
+					top: -55px;
+					width: 110px;
+				}
+
+				&:after {
+					color: darken($grey, 22%);
+					content: "\f0d7";
+					font-family: FontAwesome;
+					font-size: fontEm(32);
+					@include positioning(absolute, 82%, 42%, $width: null, $zindex: 2);
+					white-space: pre;
+					@include responsive(tsmall, portrait) {
+						top: 74%;
+					}
+				}
+			}
+
+			&:hover {
+				.graph__list__item__tooltip {
+					@include display(blk);
+				}
+			}
+		}
+
+	}
+
+}
+
+/* Vertical Y Axis Graphs */
+
+.graph-yaxis-list {
+	@include positioning(absolute, null, 0, $bottom: 15px, $zindex: 1);
+	text-align: left;
+
+	&__item {
+		color: lighten($grey, 28%);
+		height: 61px;
+		line-height: 61px;
+		position: relative;
+		text-align: left;
+		@include responsive(tsmall, portrait) {
+			height: 51px;
+			line-height: 51px;
+		}
+
+		&:after {
+			background: -webkit-linear-gradient(right, $black, darken($grey, 16%) 80%);
+			background: linear-gradient(to left, $black, darken($grey, 16%) 80%);
+			content: "";
+			height: 2px;
+			@include positioning(absolute, 20%, null, $right: 0);
+		}
+	}
+}
+
+/* Graph Bars */
+
+.graph {
+	&--design:after,
+	&--frontend:after,
+	&--other:after {
+		color: lighten($grey, 28%);
+		content: "";
+		@include positioning(absolute, null, 0, $bottom: -80px, $width: 130px);
+		text-align: left;
+		@include transform(rotate, 60deg);
+		@include responsive(tlarge, portrait) {
+			bottom: -70px;
+			width: 90px;
+		}
+		@include responsive(tsmall, portrait) {
+			bottom: -60px;
+			width: 70px;
+		}
+	}
+
+	&--other:after {
+		@include responsive(tlarge, portrait) {
+			bottom: -80px;
+			width: 113px;
+		}
+		@include responsive(tsmall, portrait) {
+			bottom: -70px;
+			width: 91px;
+		}
+	}
+
+	/*------ Graph red bars ------*/
+
+	&--design {
+
+		&:first-child:after {
+			content: "Photoshop";
+		}
+		&:nth-child(2):after {
+			content: "Illustrator";
+		}
+		&:nth-child(3):after {
+			content: "Flash";
+		}
+		&:nth-child(4):after {
+			content: "Coreldraw";
+		}
+		&:last-child:after {
+			content: "Indesign";
+		}
+	}
+
+	/*------ Graph green bars ------*/
+
+	&--frontend {
+
+		&:first-child:after {
+			content: "HTML/CSS";
+		}
+		&:nth-child(2):after {
+			content: "CMS";
+		}	
+		&:nth-child(3):after {
+			content: "JavaScript";
+		}
+		&:nth-child(4):after {
+			content: "Jquery";
+		}
+		&:last-child:after {
+			content: "ReactJS";
+		}
+	}
+
+	/*------ Graph blue bars ------*/
+
+	&--other {
+
+		&:first-child:after {
+			content: "Problem Solving";
+		}
+		&:nth-child(2):after {
+			content: "Communication";
+		}
+		&:nth-child(3):after {
+			content: "Organization";
+		}
+		&:nth-child(4):after {
+			content: "Team Player";
+		}
+		&:last-child:after {
+			content: "Research";
+		}
+	}
+
+	/*------ Graph bar position ------*/
+
+	&--bar1 {
+		background: #595959;
+		background: linear-gradient(to top, $black, #595959 25%);
+		right: 56%;
+	}
+
+	&--bar2 {
+		background: #808386;
+		background: linear-gradient(to top, $black, #808386 25%);
+		right: 44%;
+	}
+
+	&--bar3 {
+		background: #a6aaad;
+		background: linear-gradient(to top, $black, #a6aaad 25%);
+		right: 32%;
+	}
+
+	&--bar4 {
+		background: #297ab7;
+		background: linear-gradient(to top, $black, #297ab7 25%);
+		right: 20%;
+	}
+
+	&--bar5 {
+		background: #d2d3d5;
+		background: linear-gradient(to top, $black, #d2d3d5 25%);
+		right: 8%;
+	}
+}

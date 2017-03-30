@@ -1,0 +1,877 @@
+/* Projects Page Styles ******************************************/
+
+.projects {
+	background: $white;
+	justify-content: flex-start;
+
+	&__heading {
+		@include padMargin-all(mg, fontEm(120px, 80px), $bottom: fontEm(60px, 80px) );
+	}
+}
+
+.projects__tabs {
+	background: lighten($grey, 20%);
+	color: $black;
+	max-width: 1470px;
+	@include padMargin-all(mg, 0, auto, 0, auto);
+	position: relative;
+	text-align: left;
+	width: $width-full;
+	@include responsive(dsmall, portrait){
+		width: $width-full - 10;
+		max-width: 1280px;
+	}
+
+	&__1,
+	&__2,
+	&__3,
+	&__4,
+	&__5,
+	&__6 {
+		> input[type="radio"] {
+			@include display(none);
+		}
+
+		&__label {
+			background: $white;
+			@include shadow(box-shadow, 0, $spread: 0, $color: rgba($black, 1));
+			cursor: $cursor;
+			@include display(blk);
+			font-size: fontEm(19);
+			line-height: 25px;
+			padding: 1%;
+			-webkit-transition: box-shadow 0.6s ease, color 0.6s ease;
+			transition: box-shadow 0.6s ease, color 0.6s ease;
+			width: floor($width-full / 6.5);	
+			@include responsive(tlarge, portrait) {
+				width: 20%;
+			}
+			@include responsive(tsmall, portrait) {
+				@include border(null, 1px, #ddd);
+				@include padMargin(pd, 2%);
+				position: relative;
+				width: $width-full;		
+			}
+
+			&:hover {
+				color: $white;
+				@include shadow(box-shadow, 0, $y: 65px, $spread: 0, $color: rgba($black, 1));
+			}
+		}
+
+		> input[type="radio"]:checked + label {
+			background: $black;
+			color: $white;
+			@include responsive(tsmall, portrait) {
+				background: $black;
+				color: $white;
+			}
+		}
+
+		> input[type="radio"]:checked ~ div.project-carousels {
+			@include display(blk);
+		}
+	}
+
+}
+
+
+.projects__tabs__2,
+.projects__tabs__5 {
+	.project-carousels {
+		@include responsive(mlarge, portrait) {
+			max-height: 600px;
+		}
+		@include responsive(msmall, portrait) {
+			max-height: 550px;
+		}
+		.carousels-input {
+			@include responsive(mlarge, portrait) {
+				height: 300px;
+			}
+			@include responsive(msmall, portrait) {
+				height: 250px;
+			}
+		}
+	}
+}
+
+
+.projects__tabs__1,
+.projects__tabs__4 {
+	.project-carousels {
+		@include responsive(mlarge, portrait) {
+			max-height: 660px;
+		}
+		@include responsive(msmall, portrait) {
+			max-height: 680px;
+		}
+		.carousels-input {
+			@include responsive(mlarge, portrait) {
+				height: 300px;
+			}
+			@include responsive(msmall, portrait) {
+				height: 250px;
+			}
+		}
+	}
+}
+
+.projects__tabs__3 {
+	.project-carousels {
+		@include responsive(mlarge, portrait) {
+			max-height: 750px;
+		}
+		@include responsive(msmall, portrait) {
+			max-height: 650px;
+		}
+		.carousels-input {
+			@include responsive(mlarge, portrait) {
+				height: 450px;
+			}
+			@include responsive(msmall, portrait) {
+				height: 350px;
+			}
+		}
+	}
+}
+
+.projects__tabs__6 {
+	.project-carousels {
+		@include responsive(mlarge, portrait) {
+			max-height: 700px;
+		}
+		@include responsive(msmall, portrait) {
+			max-height: 710px;
+		}
+		.carousels-input {
+			@include responsive(mlarge, portrait) {
+				height: 450px;
+			}
+			@include responsive(msmall, portrait) {
+				height: 460px;
+			}
+		}
+	}
+}
+
+
+.project-carousels {
+	height: 600px;
+	background: $black;
+	@include positioning(absolute, 0, null, $right: 0, $width: 85%, $zindex: 2);
+	@include display(none);
+	@include responsive(tlarge, portrait) {
+		height: 805px;
+		width: 80%;
+	}
+	@include responsive(tsmall, portrait) {
+		max-height: 780px;
+		position: relative;
+		width: $width-full;
+	}
+	@include responsive(mlarge, portrait) {
+		max-height: 620px;
+	}
+	@include responsive(msmall, portrait) {
+		max-height: 550px;
+	}
+}
+
+.carousels-input {
+	@include display(inline);
+	height: 100%;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+	width: $width-full;
+	
+	@include responsive(dlarge, portrait) {
+		width: 80%;
+	}
+	@include responsive(tlarge, portrait) {
+		height: 490px;
+		width: $width-full;
+	}
+	@include responsive(tsmall, portrait) {
+		height: 57%;
+	}
+
+	input[type="radio"],
+	input[type="radio"] + div,
+	input[type="radio"] + h2 {
+		@include display(none);
+	}
+
+	input[type="radio"] + h2 {
+		color: $white;
+		font-size: fontEm(20);
+		@include positioning(absolute, 50%, 50%, $width: null, $zindex: 2);
+		@include transform(translate, -50%, -50%);
+	}
+
+	&__image {
+		@include display(none);
+		max-width: 100%;
+		height: auto;
+		@include positioning(absolute, 50%, 50%, $width: null, $zindex: 3);
+		@include transform(translate, -50%, -50%);
+		width: 500px;
+		@include responsive(dsmall, portrait) {
+			width: 75%;
+		}
+		@include responsive(tlarge, portrait) {
+			width: 58%;
+		}
+		@include responsive(tsmall, portrait) {
+			width: 55%;
+		}
+		@include responsive(msmall, portrait) {
+			width: 60%;
+		}
+	}
+}
+
+.controls {
+	@include positioning(absolute, null, 0, $bottom: 3%);
+	text-align: center;
+} 
+
+label[class^="label"] {
+	background-color: darken($grey, 16%);
+	border-radius: 100%;
+	cursor: $cursor;
+	@include display(inline);
+	height: 12px;
+	@include transition(background-color, 0.2s, ease);
+	width: 12px;
+	@include responsive(tsmall, portrait) {
+		width: 10px;
+		height: 10px;
+	}
+}
+
+label[class*="arrow"] {
+	color: $white;
+	cursor: $cursor;
+	@include display(none);
+	font-size: fontEm(32);
+	opacity: 0.5;
+	@include positioning(absolute, 50%, null, $right: 0, $width: null, $zindex: 1);
+	@include transition(opacity, 0.2s, ease);
+
+	&:hover {
+		opacity: 1; 
+	}
+}
+
+label[class^="label"]:hover,
+input[id*="slide1"]:checked ~ div .label:nth-of-type(1),
+input[id*="slide2"]:checked ~ div .label:nth-of-type(2),
+input[id*="slide3"]:checked ~ div .label:nth-of-type(3),
+input[id*="slide4"]:checked ~ div .label:nth-of-type(4) {
+	background-color: lighten($grey, 17%);
+}
+
+input[type="radio"]:checked + img,
+input[type="radio"]:checked + div,
+input[type="radio"]:checked + h2 {
+	@include display(blk);
+}
+
+input[id*="slide1"]:checked ~ label[id*="arrow2"],
+input[id*="slide2"]:checked ~ label[id*="arrow3"],
+input[id*="slide3"]:checked ~ label[id*="arrow4"] {
+	right: 4%;
+	@include display(blk);
+}
+
+input[id*="slide2"]:checked ~ label[id*="arrow1"],
+input[id*="slide3"]:checked ~ label[id*="arrow2"],
+input[id*="slide4"]:checked ~ label[id*="arrow3"] {
+	@include display(blk);
+	left: -90%;
+	@include transform(scaleX, -1);
+}
+
+.project-info {
+	background: rgba($black, 1);
+	@include display(blk);
+	@include float(none);
+	height: auto;
+	line-height: 32px;
+	@include padMargin(pd, 2%);
+	width: $width-full;
+	@include responsive(tlarge, portrait) {
+		line-height: 25px;
+		@include padMargin(pd, 3%);
+	}
+
+	&__heading {
+		color: $white;
+		font-size: fontEm(19);
+		@include font-weight(xbold);
+		@include padMargin-all(pd, 1%, 0, 0, 0);
+		text-shadow: none;
+		@include responsive(tlarge, portrait) {
+			@include padMargin-all(pd, 2.5%, 0, 1%, 0);
+		}
+
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+
+	&__para {
+		font-size: fontEm(19);
+		color: lighten($grey, 20%);
+	}
+
+	a {
+		color: lighten($grey, 20%);
+
+		&:hover {
+			@include font-weight(xbold);
+		}
+	}
+}
+
+
+/* Calculator */
+
+.calbox,
+.calbox input, select, textarea {
+  	color: $white;
+  	font-family: $roboto;
+  	font-size: fontEm(18);
+  	@include font-weight(regular);
+  	line-height: fontEm(26);
+  	@include responsive(msmall, portrait) {
+		font-size: fontEm(16);
+	}
+}
+
+.calbox {
+	background-color: $bluegrey;
+	border-radius: fontEm(10);
+	@include shadow(box-shadow, 11px, 0, 2px, 2px, $type: null, $color: rgba($black, 0.35));
+	height: auto;
+	max-width: 330px;
+	@include positioning(absolute, 50%, 50%, $zindex: 2);
+	@include transform(translate, -50%, -50%);
+	@include responsive(tlarge, portrait) {
+		max-width: 300px;
+		width: 80%;
+	}
+	@include responsive(tsmall, portrait) {
+		max-width: 230px;
+	}
+	@include responsive(msmall, portrait) {
+		max-width: 200px;
+		width: 95%;
+	}
+
+	&__header {
+		width: $width-full;
+		background-color: lighten($grey, 33%);
+		@include border(bottom, fontEm(1), rgba($black, 0.3));
+		@include border(left, fontEm(1), rgba($black, 0.3));
+		@include border(right, fontEm(1), rgba($black, 0.3));
+		@include border(top, fontEm(5), rgba($black, 0.3));
+		border-radius: fontEm(10) fontEm(10) 0 0;
+		@include padMargin-all(mg, $bottom: fontEm(15px, 16px));
+		@include padMargin(pd, fontEm(20px, 16px));
+		
+		@include responsive(tsmall, portrait) {
+			@include padMargin-all(pd, 0.7em, 1em, 0.7em, 1em);
+		}
+
+		&__logo {
+			color: $black;
+			@include float(left);
+			font-size: fontEm(18);
+			@include font-weight(bold);
+			@include display(inline);
+			letter-spacing: 1px;
+			@include padMargin-all(pd, $bottom: fontEm(15px, 16px));
+			@include txt-transform(uppercase);
+
+			@include responsive(tsmall, portrait) {
+				font-size: fontEm(18); 
+				@include padMargin-all(pd, $bottom: 0.7375em);
+			}
+		}
+	}
+
+	&__body {
+		@include padMargin-all(pd, fontEm(10px, 16px), fontEm(20px, 16px), fontEm(10px, 16px), fontEm(20px, 16px));
+		width: $width-full;
+		@include responsive(tsmall, portrait) {
+			@include padMargin-all(pd, 0.5em, 1em, 0.5em, 1em);
+			width: $width-full;
+		}
+		@include responsive(msmall, portrait) {
+			@include padMargin-all(pd, 0.5em, 0.7em, 0.5em, 0.7em);
+		}
+	}
+
+}
+
+
+
+
+#cal {
+	input[type="text"] {
+  		background-color: #7a7f79;
+  		border: none;
+  		@include shadow(box-shadow, 3px, 0, 1px, 3px, $color: rgba($black, 0.5));
+  		color: $black;
+  		@include display(blk);
+  		font-family: 'Share Tech Mono';
+  		font-size: fontEm(25);
+  		letter-spacing: 2px;
+  		@include padMargin-all(mg, $bottom: fontEm(10px, 16px));
+  		@include padMargin-all(pd, fontEm(2px, 17px), fontEm(4px, 16px), fontEm(2px, 17px), fontEm(4px, 16px));
+  		@include shadow(text-shadow, 1px, 0, 2px);
+  		text-align: right;
+  		width: $width-full;
+  		-moz-appearance: textfield;
+  		
+  		&:focus {
+			outline: none;
+		}
+	}
+
+	input[type="text"]::-webkit-inner-spin-button,
+	input[type="text"]::-webkit-outer-spin-button {
+		@include padMargin(mg, 0);
+		-webkit-appearance: none; 
+	}
+
+	input[type="button"] {
+		background-color: #404548;
+		@include border(null, 1px, $black);
+		border-radius: 0.625em;
+		box-shadow: 
+		inset 0 2px 3px rgba($white, 0.3),
+		inset 0 -2px 3px rgba($black, 0.3),
+			  3px 2px 1px $black;
+		color: $white;
+		cursor: $cursor;
+		@include display(inline);
+		height: $width-full - 78;
+		@include padMargin-all(mg, 0, fontEm(4px, 16px), fontEm(10px, 16px));
+		@include padMargin(pd, 0.3em);
+		text-align: center;
+		@include shadow(text-shadow, 2px, 0, 1px);
+		@include transition(all, 0.3s, ease);
+		width: $width-full - 78;
+	
+		@include responsive(tsmall, portrait) {
+			height: 20%;
+			@include padMargin-all(mg, $right: 0.39em);
+			@include padMargin(pd, 0.2em);
+			width: 20%;
+		}
+		@include responsive(msmall, portrait) {
+			height: 21%;
+			@include padMargin-all(mg, $right: 0.2em);
+			width: 21%;
+		}
+
+		&:hover {
+			@include border(null, 1px, lighten($grey, 33%));
+			@include transform(scale, 1.1);
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+
+	input[id="num0"],
+	input[id="num1"],
+	input[id="num2"],
+	input[id="num3"],
+	input[id="num4"],
+	input[id="num5"],
+	input[id="num6"],
+	input[id="num7"],
+	input[id="num8"],
+	input[id="num9"], 
+	input[id="dot"] {
+  		background: -webkit-radial-gradient(circle, rgba($white, 0.2) 20%, #353a3d 80%);
+  		background: radial-gradient(circle, rgba($white, 0.2) 20%, #353a3d 80%);
+	}
+
+	input[id="clear"],
+	input[id="del"] {
+	  	background: -webkit-radial-gradient(circle at bottom, rgba(#c57c00, 0.8), #ea9a11 90%);
+  		background: radial-gradient(circle at bottom, rgba(#c57c00, 0.8), #ea9a11 90%);
+  		background-color: $white;
+  		color: $white;
+  		height: auto;
+  		width: $width-full - 53;
+  		@include responsive(tsmall, portrait) {
+			width: 46%;
+		}
+	}
+
+	input[id="division"],
+	input[id="multiplication"],
+	input[id="subtraction"],
+	input[id="add"], 
+	input[id="equal"] {
+  		background: -webkit-radial-gradient(bottom, circle, rgba($white, 0.8), #2a98a1 90%);
+  		background: radial-gradient(circle at bottom, rgba($white, 0.8), #2a98a1 90%);
+  		background-color: #2a98a1;
+  		color: $white;
+	}
+}
+
+/* Accordion */
+
+.accordion {
+	font-family: $roboto;
+	font-size: 100%;
+	max-width: 602px;
+	text-align: left;
+	@include positioning(absolute, 50%, 50%, $zindex: 2);
+	@include transform(translate, -50%, -50%);
+	@include padMargin-all(mg, 0, auto, 0, auto);
+	@include responsive(dsmall, portrait) {
+		max-width: 500px;
+	}
+	@include responsive(tlarge, portrait) {
+		max-width: 430px;
+	}
+	@include responsive(tsmall, portrait) {
+		max-width: 330px;
+	}
+	@include responsive(mlarge, portrait) {
+		max-width: 210px;
+	}
+	@include responsive(msmall, portrait) {
+		max-width: 200px;
+	}
+
+	h3, h4 {
+		@include font-weight(bold);
+	}
+
+	h3 {
+		font-size: fontEm(20);
+		@include responsive(tsmall, portrait) {
+			font-size: fontEm(18);
+			@include padMargin(mg, 0);
+		}
+		@include responsive(msmall, portrait) {
+			line-height: fontEm(20);
+		}
+	}
+
+	h4{
+		@include responsive(tsmall, portrait) {
+			@include padMargin-all(mg, $bottom: 0.2em);
+		}
+	}
+
+	&__list {
+		background: $white;
+		@include border(null, 1px, lighten($grey, 29%));
+		border-radius: 10px;
+		@include shadow(box-shadow, 15px, 4px, 45px, -27px, $type: null, $color: rgba(darken($grey, 10%), 0.5));
+		list-style-type: none;
+		padding: 12px;
+		@include responsive(tsmall, portrait) {
+			border-radius: 7px;
+			@include padMargin(pd, 7px);
+		}
+	}
+
+	&__items {
+		@include border(null, 1px, lighten($grey, 29%));
+		@include padMargin-all(mg, $bottom: 2px);
+
+		&:last-child {
+			@include padMargin(mg, 0);
+		}
+	}
+
+	&__label {
+		background: -webkit-linear-gradient(right, $lightyellow, #00a0ae 80%);
+		background: linear-gradient(to left, $lightyellow, #00a0ae 80%);
+		color: $white;
+		cursor: $cursor;
+		@include display(blk);
+		font-size: fontEm(18);
+		@include padMargin(pd, fontEm(10px, 16px));
+		@include transition(background, 0.5s, ease);
+		@include shadow(text-shadow, 2px, 1px, 1px, $color: rgba($black, 0.5));
+		@include txt-transform(uppercase);
+
+		@include responsive(tlarge, portrait) {
+			background: -webkit-linear-gradient(right, $white, $black 80%);
+			background: linear-gradient(to left, $white, $black 80%);
+		}
+
+		@include responsive(tsmall, portrait) {
+			background: -webkit-linear-gradient(right, $lightyellow, darken($green, 10%) 80%);
+			background: linear-gradient(to left, $lightyellow, darken($green, 10%) 80%);
+		}
+
+		@include responsive(msmall, portrait) {
+			background: -webkit-linear-gradient(right, #dd6f04, #0082ca 80%);
+			background: linear-gradient(to left, #dd6f04, #0082ca 80%);
+		}
+	}
+}
+
+input[name="accordion-tabs"] {
+	@include display(none);
+} 
+
+input[name="accordion-tabs"]:checked ~ label {
+	background: $lightyellow;
+	color: $black;
+
+	@include responsive(tlarge, portrait) {
+		background: #dbdbdb;
+	}
+
+	@include responsive(tsmall, portrait) {
+		background: #efd607;
+	}
+
+	@include responsive(msmall, portrait) {
+		background: #dd6f04;
+	}
+}
+
+input[name="accordion-tabs"]:checked ~ label ~ .tabContent {
+	@include display(blk);
+	max-height: 400px;
+}
+
+.tabContent {
+	background: -webkit-linear-gradient(bottom, #f2ebdb, $white);
+	background: linear-gradient(to top, #f2ebdb, $white);
+	max-height: 0;
+	overflow: hidden;
+	@include padMargin-all(pd, 0, 10px, 0, 10px);
+	@include transition(max-height, 1s, ease);
+
+	@include responsive(tlarge, portrait) {
+		background: -webkit-linear-gradient(bottom, #dbdbdb, $white);
+		background: linear-gradient(to top, #dbdbdb, $white);
+	}
+
+	@include responsive(tsmall, portrait) {
+		background: -webkit-linear-gradient(bottom, #fff7b1, $white);
+		background: linear-gradient(to top, #fff7b1, $white);
+	}
+
+	@include responsive(msmall, portrait) {
+		background: -webkit-linear-gradient(bottom, #eebe90, $white);
+		background: linear-gradient(to top, #eebe90, $white);
+	}
+
+	h3:first-child {
+		@include padMargin-all(pd, $top: 10px);
+	}
+
+	&__para {
+		@include txt-transform(capitalize);
+
+		&:last-child {
+			@include padMargin-all(pd, $bottom: 10px);
+		}
+	}
+
+}
+
+/* Image Gallery */
+
+.gallery-container {
+	background: $black;
+	@include border(null, 1px, $black);
+	height:auto;
+	max-width: 700px;
+	@include positioning(absolute, 14%, 50%, $zindex: 3);
+	@include transform(translate, -50%, -14%);
+	@include transition(all, 0.2s, ease);
+	width: 700px;
+
+	@include responsive(dlarge, portrait) {
+		max-width: 650px;
+		top: 22%;
+		@include transform(translate, -50%, -22%);
+	}
+	@include responsive(dsmall, portrait) {
+		max-width: 500px;
+		top: 30%;
+		@include transform(translate, -50%, -30%);
+	}
+	@include responsive(dsmall, landscape) {
+		max-width: 500px;
+		top: 30%;
+		@include transform(translate, -50%, -30%);
+	}
+	@include responsive(tlarge, portrait) {
+		max-width: 400px;
+		top: 27%;
+		@include transform(translate, -50%, -27%);
+	}
+	@include responsive(tlarge, landscape) {
+		max-width: 400px;
+		top: 27%;
+		@include transform(translate, -50%, -27%);
+	}
+	@include responsive(tsmall, portrait) {
+		max-width: 330px;
+	}
+	@include responsive(tsmall, landscape) {
+		max-width: 330px;
+	}
+	@include responsive(mlarge, portrait) {
+		max-width: 210px;
+		top: 30%;
+		@include transform(translate, -50%, -30%);
+	}
+	@include responsive(mlarge, landscape) {
+		max-width: 210px;
+		top: 30%;
+		@include transform(translate, -50%, -30%);
+	}
+	@include responsive(msmall, portrait) {
+		max-width: 200px;
+		top: 28%;
+		@include transform(translate, -50%, -28%);
+	}
+
+
+	&__thumbnails {
+		@include border(null, 4px, rgba($white, 0.4));
+		@include display(blk);
+		@include float(left);
+		height: 75px;
+		@include padMargin-all(mg, 25px, $left: 5px);
+		position: relative;
+		-webkit-transition: all 0.5s ease, -webkit-transform 0.5s;
+		transition: all 0.5s ease, -webkit-transform 0.5s;
+		transition: transform 0.5s, all 0.5s ease;
+		transition: transform 0.5s, all 0.5s ease, -webkit-transform 0.5s;
+		text-align: center;
+		width: 105px;
+		z-index: 3;
+		
+		@include responsive(dsmall, portrait) {
+			height: 57px;
+			width: 80px;
+		}
+		@include responsive(dsmall, landscape) {
+			height: 57px;
+			width: 80px;
+		}
+		@include responsive(tlarge, portrait) {
+			height: 43px;
+			@include padMargin-all(mg, 15px);
+			width: 60px;
+		}
+		@include responsive(tlarge, landscape) {
+			height: 43px;
+			@include padMargin-all(mg, 15px);
+			width: 60px;
+		}
+		@include responsive(msmall, portrait) {
+			@include border(null, 1px, rgba($white, 0.4));
+			height: 30px;
+			@include padMargin-all(mg, 3px, $left: 9px);
+			width: 46px;
+		}
+		@include responsive(tsmall, portrait) {
+			height: 36px;
+			@include padMargin-all(mg, 15px);
+			width: 50px;
+		}
+		@include responsive(tsmall, landscape) {
+			height: 36px;
+			@include padMargin-all(mg, 15px);
+			width: 50px;
+		}
+		@include responsive(mlarge, portrait) {
+			@include border(null, 1px, rgba($white, 0.4));
+			height: 25px;
+			@include padMargin-all(mg, 10px, $left: 2px);
+			width: 35px;
+		}
+		@include responsive(mlarge, landscape) {
+			@include border(null, 1px, rgba($white, 0.4));
+			height: 25px;
+			@include padMargin-all(mg, 10px, $left: 2px);
+			width: 35px;
+		}
+		@include responsive(msmall, portrait) {
+			height: 16px;
+			width: 22px;
+		}
+
+		&:hover {
+			cursor: $cursor;
+			outline: 20px solid rgba($white, 0.4);
+			outline-offset: -20px;
+		}
+	}
+
+	&__first-child {
+		.gallery-container__thumbnails {
+			@include padMargin-all(mg, 25px, $left: 26px);
+
+			@include responsive(msmall, portrait) {
+				@include padMargin-all(mg, 9px, $left: 9px);
+			}
+			@include responsive(tlarge, portrait) {
+				@include padMargin-all(mg, 15px, $left: 15px);
+			}
+			@include responsive(mlarge, portrait) {
+				@include padMargin-all(mg, 10px, $left: 10px);
+			}
+		}
+	}
+}
+
+.largeView {
+	outline: 20px solid rgba($white, 0.2);
+	outline-offset: -20px;
+	@include positioning(absolute, 0, 0);
+	@include transition(all, 1s, ease);
+	@include responsive(tlarge, portrait) {
+		outline: 10px solid rgba($white, 0.2);
+		outline-offset: -10px;
+	}
+	@include responsive(msmall, portrait) {
+		outline: 5px solid rgba($white, 0.2);
+		outline-offset: -5px;
+	}
+	@include responsive(mlarge, portrait) {
+		outline: 5px solid rgba($white, 0.2);
+		outline-offset: -5px;
+	}
+}
+
+input[name="thumbnails"] {
+	@include display(none);
+}
+
+input[name="thumbnails"] ~ img {
+	opacity: 0;
+	@include transform(scale, 0.95);
+}
+
+input[name="thumbnails"]:checked + label + img {
+	opacity: 1;
+	@include transform(scale, 1);
+}
+
+input[name="thumbnails"]:checked + label > img {
+	opacity: 0.5;
+}

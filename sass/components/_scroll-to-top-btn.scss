@@ -1,0 +1,24 @@
+/* ScrollToTop Button Styles ******************************************/
+
+.scroll-top {
+	@include display(none);
+	&__btn {
+		background: rgba($black, 1);
+		@include border(null, 1px, $grey);
+		color: $white;
+		cursor: $cursor;
+		@include display(none);
+		font-size: fontEm(24);
+		max-height: 40px;
+		@include padMargin(pd, fontEm(10px, 16px));
+		@include positioning(fixed, null, null, 20px, 65px, null, $zindex: 101);
+		@include transition(all, 0.3s, ease);
+
+		&:hover {
+			background: rgba($white, 1);
+			color: $black;
+			@include border(null, 1px, $white);
+		}
+	}
+}
+

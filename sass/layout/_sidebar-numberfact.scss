@@ -1,0 +1,45 @@
+/* Sidebar Numberfact Styles ******************************************/
+
+.sidebar-numberfact {
+	background: rgba($black, 0.9);
+	max-width: 175px;
+	min-height: 100px;
+	@include positioning(fixed, 50%, null, 0, null, $zindex: 101);
+	@include border(null, 1px, $grey);
+	@include padMargin(pd, fontEm(14px, 16px));
+	color: $white;
+	transform: translateY(-50%);
+
+	@include responsive(tsmall, portrait){
+		display: none;
+	}
+
+	&__heading {
+		color: $white;
+		text-transform: none;
+		font-weight: bold;
+		text-shadow: none;
+	}
+
+	&__container {
+		@include padMargin-all(mg, $top:fontEm(18px, 16px), $bottom:fontEm(18px, 16px));
+	}
+
+	&__btn {
+		width: 100%;
+		@include border(null, 1px, $grey);
+		outline: none;
+		@include padMargin(pd, fontEm(8px, 16px));
+		font-size: fontEm(14px, 16px);
+		font-family: inherit;
+		background: $black;
+		color: $white;
+		@include transition(background, 0.5s, ease);
+		cursor: $cursor;
+
+		&:hover {
+			background: $white;
+			color: $black;
+		}
+	}
+}
